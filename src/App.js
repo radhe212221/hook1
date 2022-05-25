@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import './style.css';
 //use state
 export default function App() {
-  const [s, sets] = useState(0);
+  const [topics, settopics] = useState([]);
+
+  const addtopic = () => {
+    const mytopic = prompt('enter topic name ', 'html topic');
+    settopics([...topics, mytopic]);
+  };
   return (
     <div>
-      <h1>s: {s}</h1>
-      <button onClick={() => sets(s + 1)}>+</button>
-      <button onClick={() => sets(s - 1)}>-</button>
-      <button onClick={() => sets(0)}>0</button>
+      <button onClick={addtopic}>add topics </button>
+      <h1>All topics : {topics?.length}</h1>
+      {topics?.map((item) => (
+        <li>{item}</li>
+      ))}
     </div>
   );
 }
